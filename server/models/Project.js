@@ -1,5 +1,6 @@
 const { Schema, model } = require('mongoose')
 
+// Create a new schema for the Project model
 const ProjectSchema = new Schema({
   name: {
     type: String,
