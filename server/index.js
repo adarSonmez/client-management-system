@@ -1,12 +1,18 @@
 const express = require('express')
+const colors = require('colors')
+const { graphqlHTTP } = require('express-graphql')
 require('dotenv').config()
+
+const connectDB = require('./config/db')
+const schema = require('./schema/schema')
+
+// Connect to MongoDB
+connectDB()
 
 const app = express()
 const port = process.env.PORT || 5000
-const { graphqlHTTP } = require('express-graphql')
 
-const schema = require('./schema/schema')
-
+// GraphQL Endpoint
 app.use(
   '/graphql',
   graphqlHTTP({
@@ -15,6 +21,7 @@ app.use(
   })
 )
 
+// Start the server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`)
 })

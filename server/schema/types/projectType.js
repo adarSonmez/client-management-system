@@ -1,4 +1,3 @@
-const { clients } = require('../../sampleData')
 const ClientType = require('./clientType')
 
 const { GraphQLObjectType, GraphQLString, GraphQLID } = require('graphql')
@@ -13,7 +12,7 @@ const ProjectType = new GraphQLObjectType({
     client: {
       type: ClientType,
       resolve(parentValue, args) {
-        return clients.find((client) => client.id === parentValue.clientId)
+        return Client.findById(parentValue.clientId)
       },
     },
   }),
