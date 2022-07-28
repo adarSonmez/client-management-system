@@ -44,7 +44,7 @@ const Mutation = new GraphQLObjectType({
       },
     },
     // Update a client
-    editClient: {
+    updateClient: {
       type: ClientType,
       args: {
         id: { type: new GraphQLNonNull(GraphQLID) },
@@ -105,7 +105,7 @@ const Mutation = new GraphQLObjectType({
       },
     },
     // Update a project
-    editProject: {
+    updateProject: {
       type: ProjectType,
       args: {
         id: { type: new GraphQLNonNull(GraphQLID) },
