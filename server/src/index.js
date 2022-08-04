@@ -1,5 +1,6 @@
 const express = require('express')
 const colors = require('colors')
+const cors = require('cors')
 const { graphqlHTTP } = require('express-graphql')
 require('dotenv').config()
 
@@ -11,6 +12,9 @@ connectDB()
 
 const app = express()
 const port = process.env.PORT || 5000
+
+// Cross-Origin Resource Sharing
+app.use(cors())
 
 // GraphQL Endpoint
 app.use(

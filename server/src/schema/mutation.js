@@ -39,8 +39,11 @@ const Mutation = new GraphQLObjectType({
       args: {
         id: { type: new GraphQLNonNull(GraphQLID) },
       },
-      resolve(parentValue, args) {
-        return Client.findByIdAndRemove(args.id)
+      async resolve(parentValue, args) {
+        // Delete the client and its projects
+        const client = await Client.findByIdAndRemove(args.id)
+        await Project.deleteMany({ clientId: client.id })
+        return client
       },
     },
     // Update a client
@@ -83,7 +86,7 @@ const Mutation = new GraphQLObjectType({
           }),
           defaultValue: 'Not Started',
         },
-        clientId: { type: GraphQLID },
+        clientId: { type: new GraphQLNonNull(GraphQLID) },
       },
       resolve(parentValue, args) {
         return new Project({

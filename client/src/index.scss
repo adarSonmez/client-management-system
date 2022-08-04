@@ -1,0 +1,27 @@
+// Custom variables
+$primary: #000fe6;
+$secondary: #048600;
+
+// import bootstrap functions and variables
+@import '.../../node_modules/bootstrap/scss/functions';
+@import '.../../node_modules/bootstrap/scss/variables';
+
+// custom theme colors
+$custom-theme-colors: (
+  silver: #fafafa,
+  dark-gray: #4d4d4d,
+  pink: #f710ff,
+);
+
+$theme-colors: map-merge($custom-theme-colors, $theme-colors);
+
+// Import bootstrap
+@import '.../../node_modules/bootstrap/scss/bootstrap';
+
+// Import bootstrap icons
+// Bootstrap icons
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css');
+
+.lead {
+  font-size: 18px;
+}
